@@ -1,0 +1,47 @@
+.rumor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .rumor-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .rumor-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .rumor-info {
+    padding: 1rem;
+  }
+  
+
+
+  .transfer-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .player-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .player-info {
+    padding: 1rem;
+  }
+  

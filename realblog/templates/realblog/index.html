@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'realblog/post.css' %}">
+  <link rel="stylesheet" href="{% static 'realblog/index.css' %}">
+  <link rel="stylesheet" href="{% static 'realblog/navbar.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="section-title">
+    <h2>The Latest</h2>
+    <hr>
+  </div>
+
+  <section id="latest-posts" class="homepage-grid">
+    <div class="posts-grid">
+      {% for post in posts %}
+        <div class="post-item item-{{ forloop.counter }}">
+          <a href="{% url 'post-detail-page' slug=post.slug %}">
+            <img src="{% static 'realblog/images/'|add:post.image_name %}" alt="{{ post.title }}">
+            <div class="post-title">
+              <h3>{{ post.title }}</h3>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="{% static 'realblog/images/real_madrid_logo.png' %}" alt="Real Madrid Logo" class="footer-logo">
+        <p class="footer-brand">Real Madrid Blog</p>
+        <p class="footer-slogan">More than a club. Hala Madrid!</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="{% url 'all_post' %}">All_Posts</a></li>
+          <li><a href="{% url 'transferuri' %}">Transfers</a></li>
+          <li><a href="{% url 'echipa' %}">Line-up</a></li>
+          <li><a href="{% url 'zvonuri' %}">	Transfer Rumors</a></li>
+          <li><a href="{% url 'legende' %}">Legends</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-socials">
+        <h1>Follow us on</h1>
+          <a href="https://www.facebook.com/RealMadrid/" target="_blank">
+        <div class="social-icons">
+          <a href="https://www.facebook.com/RealMadrid/" target="_blank">
+            <img src="{% static 'realblog/images/facebook.jpg' %}" alt="Facebook">
+          </a>
+          <a href="https://x.com/realmadrid" target="_blank">
+            <img src="{% static 'realblog/images/twitter.jpg' %}" alt="Twitter">
+          </a>
+          <a href="https://www.instagram.com/realmadrid/" target="_blank">
+            <img src="{% static 'realblog/images/instagram.jpg' %}" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copy">
+      <p>© 2025 Real Madrid Blog. All rights reserved..</p>
+    </div>
+  </footer>
+{% endblock %}

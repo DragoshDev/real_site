@@ -1,0 +1,98 @@
+
+
+
+/* Navbar principal */
+.navbar {
+  background-color: #000; /* fundal negru */
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Stânga: logo + nume */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left .logo {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Link-ul pe tot logo + text */
+.navbar-brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-brand-link:hover .brand {
+  text-decoration: underline;
+}
+
+/* Meniu de navigare */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ccc;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+
+.navbar-left a.navbar-brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}

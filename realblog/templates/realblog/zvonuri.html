@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'realblog/zvonuri.css' %}">
+  <link rel="stylesheet" href="{% static 'realblog/navbar.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="rumor-container">
+  <h2>Transfer Rumors at Real Madrid</h2>
+  <div id="rumor-list" class="rumor-grid"></div>
+</div>
+
+<script>
+  fetch("{% url 'api_rumors' %}")
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById("rumor-list");
+      container.innerHTML = "";
+
+      data.forEach(item => {
+        const card = document.createElement("div");
+        card.classList.add("rumor-card");
+
+        // Folosește exact item.image, fără a adăuga prefix static!
+        card.innerHTML = `
+  <div class="rumor-image">
+    <img src="${item.image_url}" alt="${item.player_name}">
+  </div>
+  <div class="rumor-info">
+    <h3>${item.player_name}</h3>
+    <p><strong>From:</strong> ${item.from_team || "Unknown"}</p>
+    <p><strong>To:</strong> Rumored / Unknown</p>
+    <p><strong>Rumor Credibility:</strong> ${item.credibility ? item.credibility + " / 5" : "Not rated"}</p>
+    <p><strong>Source:</strong> ${item.source || "N/A"}</p>
+    <p class="transfer-date"><em>${item.date}</em></p>
+  </div>
+`;
+
+       
+        container.appendChild(card);
+      });
+    });
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <title>Real Madrid team</title>
+    <a href="{% url 'index' %}" class="btn-back">←  Back to the main page.</a>
+
+    <link rel="stylesheet" href="{% static 'realblog/echipa.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    
+    <h1>Real Madrid 2025 squad</h1>
+
+    <section id="primul-11">
+        <h2>The first 11</h2>
+        <div class="starting-players">
+            {% for player in starting_players %}
+                <div class="player-card">
+                    <img src="{{ player.photo.url }}" alt="{{ player.name }}" />
+                    <h3>{{ player.name }}</h3>
+                    <p>Nr: {{ player.number }} | {{ player.get_position_display }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="diagrama-terrain">
+        <h2>Position of players on the field</h2>
+        <div id="field-container">
+            <img src="{% static 'realblog/images/stadium.jpg' %}" alt="Teren de fotbal" class="field-img" />
+            <div id="players-on-field">
+                {% for player in starting_players %}
+                    <div class="player-marker" 
+                         style="left: {{ player.x_pos }}%; top: {{ player.y_pos }}%;">
+                         {{ player.number }}
+                         <span class="tooltip">{{ player.name }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="tot-lotul">
+        <h2>Complet Squad</h2>
+        <div class="all-players">
+            {% for player in players %}
+                <div class="player-card small">
+                    <img src="{{ player.photo.url }}" alt="{{ player.name }}" />
+                    <p>{{ player.number }} - {{ player.name }} ({{ player.get_position_display }})</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,180 @@
+/* ========== Container General ========== */
+.homepage-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  background: #fff;
+}
+
+/* ========== Grid pentru Postări ========== */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  grid-template-areas:
+    "main main side1 side2"
+    "small1 small2 wide wide";
+}
+
+/* ========== Fiecare postare ========== */
+.post-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.post-item:hover {
+  transform: scale(1.01);
+}
+
+.post-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.post-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+/* ========== Poziționare postări în layout ========== */
+.item-1 { grid-area: main; height: 500px; }
+.item-2 { grid-area: side1; height: 240px; }
+.item-3 { grid-area: side2; height: 240px; }
+.item-4 { grid-area: small1; height: 200px; }
+.item-5 { grid-area: small2; height: 200px; }
+.item-6 { grid-area: wide; height: 240px; }
+
+/* ========== Conținutul postării ========== */
+
+/* Pentru prima postare (mare) – titlul peste imagine */
+.item-1 .post-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: #fff;
+  padding: 20px;
+  text-align: left;
+}
+
+.item-1 .post-content h3 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Pentru celelalte postări – titlul sub imagine */
+.post-item:not(.item-1) .post-content {
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+}
+
+.post-item:not(.item-1) .post-content h3 {
+  font-size: 16px;
+  color: #222;
+  margin-top: 8px;
+}
+
+/* ========== Footer ========== */
+.site-footer {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 50px 30px 20px;
+  margin-top: 60px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer-brand {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.footer-links {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-socials {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-socials h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-socials img {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer-socials img:hover {
+  transform: scale(1.15);
+}
+
+.footer-copy {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #999;
+}

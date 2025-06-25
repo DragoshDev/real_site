@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{{ post.content|safe }}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'realblog/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'realblog/app.css' %}">
+  <link rel="stylesheet" href="{% static 'realblog/post-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="post-container">
+  <div class="post-header">
+    <img src="{% static 'realblog/images/'|add:post.image_name %}" alt="{{ post.title }}" class="post-image">
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="post-date">{{ post.date|date:"F d, Y" }}</p>
+  </div>
+
+  <div class="post-body">
+    {{ post.content|linebreaks }}
+  </div>
+
+  <div class="post-navigation">
+    <a href="{% url 'all_post' %}" class="btn-back">← Back to all posts</a>
+  </div>
+
+  <div class="related-posts">
+    <h3>Similar posts</h3>
+    <div class="related-grid">
+      {% for similar_post in similar_posts %}
+        <div class="related-item">
+          <a href="{% url 'post-detail-page' slug=similar_post.slug %}">
+            <img src="{% static 'realblog/images/'|add:similar_post.image_name %}" alt="{{ similar_post.title }}">
+            <h4>{{ similar_post.title }}</h4>
+          </a>
+        </div>
+      {% empty %}
+        <p>There are no similar posts at the moment.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="comments-section">
+    <h3>Comments</h3>
+  
+    {% for comment in comments %}
+      <div class="comment">
+        <div class="comment-avatar">
+          <img src="{% static 'realblog/images/avatar.jpg' %}" alt="Avatar">
+        </div>
+        <div class="comment-content">
+          <strong>{{ comment.name }}</strong>
+          <span class="date">{{ comment.created_at|date:"d M Y" }}</span>
+          <p>{{ comment.content }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <p>No comments yet. Be the first!!</p>
+    {% endfor %}
+  
+    <hr>
+    <h4>Add a comment</h4>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn-comment">Send comment</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

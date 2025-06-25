@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Real Madrid Blog{% endblock %}</title>
+
+    {% block css_files %}
+      <link rel="stylesheet" href="{% static 'realblog/app.css' %}">
+      <link rel="stylesheet" href="{% static 'realblog/navbar.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="navbar-left">
+        <a href="{% url 'startpage' %}" class="navbar-brand-link">
+          <img src="{% static 'realblog/images/real_madrid_logo.png' %}" alt="Real Madrid Logo" class="logo" />
+          <span class="brand">Real Madrid Community</span>
+        </a>
+      </div>
+  
+      <nav>
+        <ul class="nav-links">
+          <li><a href="{% url 'all_post' %}">All Posts</a></li>
+          <li><a href="{% url 'echipa' %}">Line-up</a></li>
+          <li><a href="{% url 'transferuri' %}">Transfers</a></li>
+          <li><a href="{% url 'zvonuri' %}">	Transfer Rumors</a></li>
+          <li><a href="{% url 'legende' %}">Legends</a></li>
+          <!-- Adăugăm aici iconița user -->
+          <li class="user-icon">
+            {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" style="background: none; border: none; cursor: pointer;">
+                <img src="{% static 'realblog/images/user_logged.png' %}" alt="Logout" width="30" title="Logout" />
+              </button>
+            </form>
+          {% else %}
+            <a href="{% url 'login' %}">
+              <img src="{% static 'realblog/images/user_logged.png' %}" alt="Login" width="30" title="Login" />
+            </a>
+          {% endif %}
+          
+          </li>
+          
+        </ul>
+      </nav>
+      
+  
+      <div class="social-icons">
+        <a href="https://www.facebook.com/RealMadrid/" target="_blank">
+          <img src="{% static 'realblog/images/facebook.jpg' %}" alt="Facebook" />
+        </a>
+        <a href="https://x.com/realmadrid" target="_blank">
+          <img src="{% static 'realblog/images/twitter.jpg' %}" alt="Twitter" />
+        </a>
+        <a href="https://www.instagram.com/realmadrid/" target="_blank">
+          <img src="{% static 'realblog/images/instagram.jpg' %}" alt="Instagram" />
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  {% block content %}{% endblock %}
+
+  
+</body>
+</html>

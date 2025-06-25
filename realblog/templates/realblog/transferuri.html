@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'realblog/transferuri.css' %}">
+  <link rel="stylesheet" href="{% static 'realblog/navbar.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="transferuri-container">
+    <h2>Recent transfers</h2>
+    <div id="transferuri-list" class="transfer-grid">
+     
+    </div>
+  </div>
+  
+  <script>
+    fetch("{% url 'api_transfers' %}")
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("transferuri-list");
+        container.innerHTML = "";  // curățare
+        data.forEach(item => {
+          const card = document.createElement("div");
+          card.classList.add("transfer-card");
+          card.innerHTML = `
+            <div class="player-image">
+              <img src="${item.image}" alt="${item.player_name}">
+
+            </div>
+            <div class="player-info">
+              <h3>${item.player_name}</h3>
+              <p><strong>From:</strong> ${item.from_team}</p>
+              <p><strong>To:</strong> ${item.to_team}</p>
+              <p><strong>Fee:</strong> ${item.fee}</p>
+              <p class="player-description">${item.description}</p>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      });
+  </script>
+  
+  
+  
+  {% endblock %}

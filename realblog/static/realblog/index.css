@@ -1,0 +1,206 @@
+/* Container general pentru postările de pe homepage */
+.homepage-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  background: #fff;
+}
+
+/* Grid pentru aranjarea postărilor */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-template-areas:
+    "main side1 side2"
+    "small1 small2 small3";
+  max-width: 1200px;
+  margin: 0 auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* Stil general pentru fiecare postare */
+.post-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: visible;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  background: white;
+  transition: transform 0.3s ease;
+  height: auto;
+}
+
+.post-item:hover {
+  transform: scale(1.03);
+}
+
+/* Imaginea ocupă tot spațiul lăsat */
+.post-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+/* Titlu dedesubt, centrat, cu padding */
+.post-title {
+  padding: 12px 15px;
+  background: #fafafa;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.post-title h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+/* Titlu mai mare pentru prima postare */
+.item-1 .post-title h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #000;
+  padding: 20px 15px;
+  background: #fff;
+}
+
+/* Poziționarea fiecărei postări în layout */
+.item-1 { grid-area: main; }
+.item-2 { grid-area: side1; }
+.item-3 { grid-area: side2; }
+.item-4 { grid-area: small1; }
+.item-5 { grid-area: small2; }
+.item-6 { grid-area: small3; }
+
+/* Footer styling */
+.site-footer {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 50px 30px 20px;
+  margin-top: 60px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer-brand {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.footer-slogan {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-links {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-socials {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-socials h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-socials img {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer-socials img:hover {
+  transform: scale(1.15);
+}
+
+.footer-copy {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+
+
+.section-title {
+  max-width: 1200px;
+  margin: 40px auto 20px auto;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-title h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 8px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title hr {
+  width: 80px;
+  height: 3px;
+  background-color: #0070f3; /* un albastru frumos */
+  border: none;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+

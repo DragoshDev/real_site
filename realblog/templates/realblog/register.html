@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Înregistrare</title>
+  <link rel="stylesheet" href="{% static 'realblog/auth.css' %}">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Înregistrare</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Creează cont</button>
+    </form>
+    <p>Ai deja un cont? <a href="{% url 'login' %}">Autentifică-te aici</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'realblog/legende.css' %}">
+  <link rel="stylesheet" href="{% static 'realblog/navbar.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<h2 class="title">Top 10 Real Madrid Legends</h2>
+
+<div class="legends-wrapper">
+  {% for legend in legends %}
+    <div class="legend-entry">
+      <div class="legend-img">
+        <img src="{{ legend.image.url }}" alt="{{ legend.name }}">
+      </div>
+      <div class="legend-text">
+        <h3>{{ legend.name }}</h3>
+        <p>{{ legend.description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

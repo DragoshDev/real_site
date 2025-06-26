@@ -79,10 +79,10 @@ class Player(models.Model):
     name = models.CharField(max_length=100)
     number = models.PositiveIntegerField()
     position = models.CharField(max_length=2, choices=POSITION_CHOICES)
-    photo = models.ImageField(upload_to='players/')  # imagine jucător alb-negru
-    is_starting = models.BooleanField(default=False)  # face parte din primul 11
-    x_pos = models.FloatField(null=True, blank=True)  # poziție pe axa X pentru diagramă
-    y_pos = models.FloatField(null=True, blank=True)  # poziție pe axa Y pentru diagramă
+    photo = models.ImageField(upload_to='players/')  
+    is_starting = models.BooleanField(default=False)  
+    x_pos = models.FloatField(null=True, blank=True)  
+    y_pos = models.FloatField(null=True, blank=True)  
 
     def __str__(self):
         return f"{self.name} ({self.number})"

@@ -15,7 +15,7 @@ urlpatterns = [
     path("zvonuri/", views.zvonuri, name="zvonuri"),
     path("legende/", views.legende, name="legende"),
 
-    path("echipa/", views.echipa, name="echipa"),  # ✅ adaugă aceasta
+    path("echipa/", views.echipa, name="echipa"),  
     path("postari/<slug:slug>/", views.post_detail, name="post_detail"),
     path("index/" , views.index, name='index'),
     path('api/transfers/', api_transfers, name='api_transfers'),
